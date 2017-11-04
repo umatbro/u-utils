@@ -9,7 +9,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 
 setup(
-    name='um_utils',
+    name='um',
     version='1.2.0.dev1',  # development release
     description='Package with utilities',
     long_description='',  # read this form README.rst
@@ -23,7 +23,7 @@ setup(
         'Intended Audience :: Developers',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6'
+        'Programming Language :: Python :: 3.6',
         'Programming Language :: JavaScript',
         'Topic :: Utilities',
     ],

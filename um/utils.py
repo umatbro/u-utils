@@ -32,7 +32,7 @@ def constrain(value, max_val, min_val=0):
     return max(min_val, min(value, max_val))
 
 
-def add_tuples(a, b):
+def add_tuples(a: tuple, b: tuple) -> tuple:
     """
     Add subsequent elements of a tuple to each other.
 
@@ -45,9 +45,10 @@ def add_tuples(a, b):
     return tuple(map(operator.add, a, b))
 
 
-def sub_tuples(a, b):
+def sub_tuples(a: tuple, b: tuple) -> tuple:
     """
-    Subtract subsequent elements of a tuple to each other.
+    Subtract subsequent elements of a tuple from each other.
+    a - b
 
     Example: (1, 3, 5) - (3, 3, 3) = (-2, 0, 2)
 

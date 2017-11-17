@@ -57,3 +57,18 @@ def sub_tuples(a: tuple, b: tuple) -> tuple:
     :return: result tuple
     """
     return tuple(map(operator.sub, a, b))
+
+
+def merge_dicts(*dicts_to_merge):
+    """
+    Merge multiple dictionaries into one.
+    Leaves originals unchanged.
+
+    :param dicts_to_merge: dictionaries to be merged. Multiple dictionaries can be provided.
+    :return: copy of merged dictionary (originals are left unchanged).
+    """
+    result = {}
+    for dictionary in dicts_to_merge:
+        result.update(dictionary)
+
+    return result

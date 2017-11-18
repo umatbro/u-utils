@@ -36,8 +36,6 @@ def add_tuples(a: tuple, b: tuple) -> tuple:
     """
     Add subsequent elements of a tuple to each other.
 
-    Example: (1, 3, 5) + (3, 3, 3) = (4, 6, 8)
-
     :param a: first tuple
     :param b: second tuple
     :return: result tuple
@@ -49,8 +47,6 @@ def sub_tuples(a: tuple, b: tuple) -> tuple:
     """
     Subtract subsequent elements of a tuple from each other.
     a - b
-
-    Example: (1, 3, 5) - (3, 3, 3) = (-2, 0, 2)
 
     :param a: first tuple
     :param b: second tuple

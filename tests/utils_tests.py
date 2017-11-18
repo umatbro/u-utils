@@ -43,8 +43,43 @@ class TestConstrain(TestCase):
 
 
 class TestAddTuples(TestCase):
-    pass
+    def test_simple_addition(self):
+        """Example: (1, 3, 5) + (3, 3, 3) = (4, 6, 8)"""
+        self.assertTupleEqual(
+            utils.add_tuples((1, 3, 5), (3, 3, 3)),
+            (4, 6, 8)
+        )
+
+    def test_add_different_size_tuples(self):
+        self.assertTupleEqual(
+            utils.add_tuples((1, 3, 5), (3, 3)),
+            (4, 6)
+        )
 
 
 class TestSubTuples(TestCase):
-    pass
+    def test_simple_subtraction(self):
+        """Example: (1, 3, 5) - (3, 3, 3) = (-2, 0, 2)"""
+        self.assertTupleEqual(
+            utils.sub_tuples((1, 3, 5), (3, 3, 3)),
+            (-2, 0, 2)
+        )
+
+    def test_different_size_tuples(self):
+        self.assertTupleEqual(
+            utils.sub_tuples((1, 3, 5), (3, 3)),
+            (-2, 0)
+        )
+
+
+class TestMergeDicts(TestCase):
+    def test_merge_dicts(self):
+        self.assertDictEqual(
+            utils.merge_dicts(
+                {1: 'one', 2: 'two', 4: 'four'},
+                {1: 'one1', 3: 'three'},
+                {5: 'five'},
+                {}
+            ),
+            {1: 'one1', 2: 'two', 3: 'three', 4: 'four', 5: 'five'}
+        )

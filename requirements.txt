@@ -2,7 +2,10 @@ beautifulsoup4==4.6.0
 certifi==2017.11.5
 chardet==3.0.4
 idna==2.6
+pkginfo==1.4.1
 requests==2.18.4
-um==1.2.0b1
--e git+https://github.com/umatbro/u-utils.git@29e08ab8250630ee2e8df047b610c8ef0a3d03e3#egg=um_utils
+requests-toolbelt==0.8.0
+tqdm==4.19.5
+twine==1.9.1
+-e git+https://github.com/umatbro/u-utils.git@1f64622952b5b3643c0c26a3f3d5d385224904a9#egg=um
 urllib3==1.22

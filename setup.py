@@ -10,7 +10,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='um',
-    version='1.2.0b1',  # development release
+    version='1.3.0',  # development release
     description='Package with utilities',
     long_description=long_description,  # read this form README.rst
     url='https://github.com/umatbro/u-utils',

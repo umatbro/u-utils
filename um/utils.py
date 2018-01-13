@@ -2,6 +2,7 @@
 Module containing utility functions
 """
 import operator
+from time import time
 
 
 def remap(x, in_min, in_max, out_min, out_max):
@@ -68,3 +69,21 @@ def merge_dicts(*dicts_to_merge):
         result.update(dictionary)
 
     return result
+
+
+def timer(func):
+    """
+    Decorator function.
+    Prints function execution time to console.
+
+    :param func: function to be measured
+    :return: function result (unchanged)
+    """
+    def timing(*args, **kwargs):
+        start = time()
+        func_result = func(*args, **kwargs)
+        stop = time()
+        print('Function \'{}\' executed in: {}s'.format(func.__name__, stop - start))
+        return func_result
+
+    return timing

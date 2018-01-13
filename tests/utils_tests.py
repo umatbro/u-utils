@@ -1,4 +1,6 @@
 from unittest import TestCase
+import time
+
 from um import utils
 
 
@@ -83,3 +85,17 @@ class TestMergeDicts(TestCase):
             ),
             {1: 'one1', 2: 'two', 3: 'three', 4: 'four', 5: 'five'}
         )
+
+
+class TestTimerDecorator(TestCase):
+    def test_timer(self):
+        @utils.timer
+        def wait_function(time_to_wait, some_arg):
+            time.sleep(time_to_wait)
+
+        with utils.captured_output() as (out, err):
+            wait_function(0.5, some_arg='foo')
+        console_output = out.getvalue().strip()
+        number = float(console_output.replace('Function \'wait_function\' executed in: ', '').replace('s', ''))
+
+        self.assertAlmostEqual(number, 0.5, places=1)

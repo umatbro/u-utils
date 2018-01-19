@@ -99,3 +99,30 @@ class TestTimerDecorator(TestCase):
         number = float(console_output.replace('Function \'wait_function\' executed in: ', '').replace('s', ''))
 
         self.assertAlmostEqual(number, 0.5, places=1)
+
+
+class TestMemoizeDecorator(TestCase):
+    def test_fibo_with_args(self):
+        @utils.memoize
+        def fibo(n):
+            if n is 0:
+                return 0
+            if n <= 2:
+                return 1
+            return fibo(n-1) + fibo(n-2)
+
+        self.assertEqual(fibo(100), 354224848179261915075)
+        self.assertEqual(fibo(61), 2504730781961)
+
+    def test_fibo_with_kwargs(self):
+
+        @utils.memoize
+        def fibo(n):
+            if n is 0:
+                return 0
+            if n <= 2:
+                return 1
+            return fibo(n - 1) + fibo(n - 2)
+
+        self.assertEqual(fibo(n=69), 117669030460994)
+        self.assertEqual(fibo(n=291), 2923602405716568564338475449381171413803636207598822186175234)

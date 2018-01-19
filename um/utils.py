@@ -3,6 +3,7 @@ Module containing utility functions
 """
 import sys
 import operator
+import functools
 from time import time
 from contextlib import contextmanager
 from io import StringIO
@@ -115,3 +116,27 @@ def captured_output():
         yield sys.stdout, sys.stderr
     finally:
         sys.stdout, sys.stderr = old_out, old_err
+
+
+def memoize(function):
+    """
+    Decorator that stores in cache results from previous function calls
+    (it can be used to boost performance).
+    """
+    function.cache = {}  # init function results cache
+
+    class hashdict(dict):
+        """Hashable dict - class to help hash kwargs"""
+        def __hash__(self):
+            return hash(tuple(sorted(self.items())))
+
+    @functools.wraps(function)
+    def wrapper(*args, **kwargs):
+        hkwargs = hashdict(kwargs)
+        # store function return value in cache if it is not stored already and return cached result
+        if (args, hkwargs) not in function.cache:
+            function.cache[(args, hkwargs)] = function(*args, **kwargs)
+
+        return function.cache[(args, hkwargs)]
+
+    return wrapper

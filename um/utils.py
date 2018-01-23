@@ -83,6 +83,7 @@ def timer(func):
     :param func: function to be measured
     :return: function result (unchanged)
     """
+    @functools.wraps(func)
     def timing(*args, **kwargs):
         start = time()
         func_result = func(*args, **kwargs)

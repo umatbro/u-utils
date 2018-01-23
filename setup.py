@@ -10,7 +10,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='um',
-    version='1.3.0',  # development release
+    version='1.4.0',
     description='Package with utilities',
     long_description=long_description,  # read this form README.rst
     url='https://github.com/umatbro/u-utils',
@@ -23,11 +23,10 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
-        # 'Programming Language :: JavaScript',
         'Topic :: Utilities',
     ],
     keywords='utils',
-    packages=find_packages(exclude=['docs']),
+    packages=find_packages(exclude=['docs', 'other']),
     install_requires=[],
     python_requires='>=3',
     entry_points={

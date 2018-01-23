@@ -1,4 +1,4 @@
-um Utils
+um utils
 =========
 
 Project contains utility functions
@@ -21,3 +21,4 @@ Contents of the package
 
 * utility functions
 * visual package with color utilities
+* collections module

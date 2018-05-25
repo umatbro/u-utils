@@ -7,5 +7,4 @@ requests==2.18.4
 requests-toolbelt==0.8.0
 tqdm==4.19.5
 twine==1.9.1
--e git+https://github.com/umatbro/u-utils.git@1f64622952b5b3643c0c26a3f3d5d385224904a9#egg=um
 urllib3==1.22

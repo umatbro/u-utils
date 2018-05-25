@@ -7,30 +7,32 @@ import functools
 from time import time
 from contextlib import contextmanager
 from io import StringIO
+from typing import Union
 
 
-def remap(x, in_min, in_max, out_min, out_max):
+def remap(x: Union[float, int], in_min: Union[float, int], in_max: Union[float, int], out_min: Union[float, int],
+          out_max: Union[float, int]) -> float:
     """
-    Map input value (knowing minimum and maximum values that it can take) to another range
+    Map input value (knowing minimum and maximum values that it can take) to another range.
 
     :param x: value to be mapped
     :param in_min: minimum value of input
     :param in_max: maximum value of input
     :param out_min: minimum value of output
     :param out_max: maximum value of output
-    :return: changed value
+    :return: value mapped to a new range
     """
     return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
 
 
-def constrain(value, max_val, min_val=0):
+def constrain(value: Union[int, float], max_val: Union[float, int], min_val: Union[float, int]=0):
     """
-    Constrain given value in given boundries
+    Constrain given value in given boundaries.
 
     :param value: value to be constrained
     :param max_val: value cannot be more than this
     :param min_val: returned value won't be lower than this
-    :return: constrained value
+    :return: value constrained within given range
     """
     if max_val < min_val:
         max_val, min_val = min_val, max_val
@@ -60,7 +62,7 @@ def sub_tuples(a: tuple, b: tuple) -> tuple:
     return tuple(map(operator.sub, a, b))
 
 
-def merge_dicts(*dicts_to_merge):
+def merge_dicts(*dicts_to_merge: dict):
     """
     Merge multiple dictionaries into one.
     Leaves originals unchanged.

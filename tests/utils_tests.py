@@ -126,3 +126,17 @@ class TestMemoizeDecorator(TestCase):
 
         self.assertEqual(fibo(n=69), 117669030460994)
         self.assertEqual(fibo(n=291), 2923602405716568564338475449381171413803636207598822186175234)
+
+
+class TestFindNestedKeyValue(TestCase):
+    def test_simple_nested(self):
+        test_dict = {
+            'top': {
+                'nested': 3
+            },
+            'nested': 5
+        }
+        self.assertListEqual([
+            (3, ['top', 'nested']),  # value, key path
+            (5, ['nested'])
+        ], list(utils.find_nested_key_value(test_dict, 'nested')))

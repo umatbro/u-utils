@@ -7,7 +7,7 @@ import functools
 from time import time
 from contextlib import contextmanager
 from io import StringIO
-from typing import Union
+from typing import Union, Hashable
 
 
 def remap(x: Union[float, int], in_min: Union[float, int], in_max: Union[float, int], out_min: Union[float, int],
@@ -143,3 +143,7 @@ def memoize(function):
         return function.cache[(args, hkwargs)]
 
     return wrapper
+
+
+def find_nested_key_value(dictionary: dict, key: Hashable):
+    pass

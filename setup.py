@@ -10,7 +10,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='um',
-    version='1.4.0',
+    version='1.5.0',
     description='Package with utilities',
     long_description=long_description,  # read this form README.rst
     url='https://github.com/umatbro/u-utils',
@@ -27,7 +27,10 @@ setup(
     ],
     keywords='utils',
     packages=find_packages(exclude=['docs', 'other']),
-    install_requires=[],
+    install_requires=[
+        'numpy==1.14.5',
+        'pandas==0.23.3',
+    ],
     python_requires='>=3',
     entry_points={
         'console_scripts': []

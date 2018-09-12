@@ -1,5 +1,5 @@
 import unittest
-from um.visuals.color import hex, hex2rgb
+from um.visuals.color import hex, hex2rgb, Color
 
 
 class TestColors(unittest.TestCase):
@@ -31,3 +31,25 @@ class TestColors(unittest.TestCase):
             hex2rgb('00g000')
         with self.assertRaises(ValueError):
             hex2rgb('-abcdf')
+
+    def test_color_class_constructor(self):
+        color = Color(0x11, 0x22, 0x33)
+        self.assertEqual(color.r, 0x11)
+        self.assertEqual(color.g, 0x22)
+        self.assertEqual(color.b, 0x33)
+
+        with self.assertRaises(ValueError):
+            color = Color(0x00, 0x01, 0x100)
+
+        with self.assertRaises(ValueError):
+            color = Color(0x00, -0x01, 0x02)
+
+    def test_color_hex(self):
+        color = Color(0x21, 0xff, 0xa3)
+        self.assertEqual('21ffa3', color.hex())
+
+        black = Color(0, 0, 0)
+        self.assertEqual('#000000', black.hex('#'))
+
+        white = Color(255, 255, 255)
+        self.assertEqual('0xffffff', white.hex('0x'))

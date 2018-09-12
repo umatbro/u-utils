@@ -7,6 +7,18 @@ https://material.io/guidelines/style/color.html#color-color-palette
 import re
 
 
+class Color:
+    def __init__(self, r: int =0x0, g: int=0x0, b: int =0x0):
+        if any(value < 0 or value > 255 for value in (r, g, b)):
+            raise ValueError('RGB color values have to be in range 0-255')
+        self.r = r
+        self.g = g
+        self.b = b
+
+    def hex(self, prefix: str=''):
+        return hex((self.r, self.g, self.b), prefix)
+
+
 def hex2rgb(hex_code: str) -> tuple:
     """
     Convert color given in hex code to RGB in ints. Result is returned inside 3-element tuple.
@@ -22,18 +34,19 @@ def hex2rgb(hex_code: str) -> tuple:
     return tuple(int(h[i: i + 2], 16) for i in (0, 2, 4))
 
 
-def hex(color: tuple) -> str:
+def hex(color: tuple, prefix: str='#') -> str:
     """
     Convert RGB to HEX.
 
     :param color: 3-element tuple with color RGB values
+    :param prefix: string prefix
     :return: string with color in hex
     """
     if len(color) is not 3:
         raise ValueError('Color should be a 3 element tuple')
     if not all([0 <= v <= 255 for v in color]):
         raise ValueError('RGB values have to be in range from 0 to 255')
-    return '#{:02x}{:02x}{:02x}'.format(color[0], color[1], color[2])
+    return '{}{:02x}{:02x}{:02x}'.format(prefix, color[0], color[1], color[2])
 
 
 BLACK = (0, 0, 0)

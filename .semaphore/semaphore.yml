@@ -12,7 +12,7 @@ blocks:
         - name: pytest
           matrix:
             - env_var: PYTHON_VERSION
-              values: ["3.5", "3.6", "3.7"]
+              values: ["3.7"]
           commands:
             - sem-version python $PYTHON_VERSION
             - checkout

@@ -9,6 +9,7 @@ blocks:
     task:
       secrets:
         - name: pypi-credentials
+        - name: github-ssh
       jobs:
         - name: Publish
           commands:
@@ -18,5 +19,6 @@ blocks:
             - python -m pip install poetry
             - poetry install
             # push the tag to git repository
+            - git config core.sshCommand "ssh -i /home/semaphore/.keys/id_rsa_semaphoreci -F /dev/null"
             - git tag $(python get_package_version.py) && git push --follow-tags
             - poetry publish --username $PYPI_USERNAME --password $PYPI_PASSWORD --build

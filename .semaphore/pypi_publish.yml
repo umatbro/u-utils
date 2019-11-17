@@ -8,7 +8,7 @@ blocks:
   - name: PyPI publish
     task:
       secrets:
-        - pypi-credentials
+        - name: pypi-credentials
       jobs:
         - name: Publish
           commands:

@@ -17,8 +17,10 @@ blocks:
             - checkout
             - python -m pip install --upgrade pip
             - python -m pip install poetry
-            - poetry install
+            - python -m pip install toml
             # push the tag to git repository
             - git config core.sshCommand "ssh -i /home/semaphore/.keys/id_rsa_semaphoreci -F /dev/null"
-            - git tag $(python get_package_version.py) && git push --follow-tags
+            - ssh-keyscan github.com >> ~/.ssh/known_hosts
+            - export UM_VERSION=$(python get_package_version.py)
+            - git tag $UM_VERSION && git push --follow-tags
             - poetry publish --username $PYPI_USERNAME --password $PYPI_PASSWORD --build

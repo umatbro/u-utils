@@ -1,0 +1,30 @@
+version: v1.0
+
+name: Python
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Test
+    task:
+      jobs:
+        - name: pytest
+          matrix:
+            - env_var: PYTHON_VERSION
+              values: ["3.7"]
+          commands:
+            - sem-version python $PYTHON_VERSION
+            - checkout
+            - python -m pip install --upgrade pip
+            - python -m pip install poetry
+            - poetry install
+            - pytest
+
+promotions:
+  - name: PyPI publish
+    pipeline_file: pypi_publish.yml
+    auto_promote_on:
+      - result: passed
+        branch:
+          - master

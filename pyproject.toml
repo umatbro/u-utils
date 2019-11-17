@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "um"
+version = "1.5.3"
+description = ""
+authors = ["umatbro <umatbroo@gmail.com>"]
+license = "MIT"
+repository = "https://github.com/umatbro/u-utils"
+readme = "README.rst"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+numpy = "^1.17"
+pandas = "^0.25.3"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+toml = "^0.10.0"
+
+[build-system]
+requires = [
+    "poetry>=0.12"
+]
+build-backend = "poetry.masonry.api"

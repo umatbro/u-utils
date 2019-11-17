@@ -1,0 +1,21 @@
+version: v1.0
+name: Deploy to production
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: PyPI publish
+    task:
+      secrets:
+        - name: pypi-credentials
+      jobs:
+        - name: Publish
+          commands:
+            - sem-version python 3.7
+            - checkout
+            - python -m pip install --upgrade pip
+            - python -m pip install poetry
+            - poetry publish --username $PYPI_USERNAME --password $PYPI_PASSWORD --build
+            # now push the tag to git repository
+            - git tag $(python get_package_version.py) && git push --follow-tags

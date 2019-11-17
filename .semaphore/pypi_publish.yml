@@ -16,6 +16,7 @@ blocks:
             - checkout
             - python -m pip install --upgrade pip
             - python -m pip install poetry
-            - poetry publish --username $PYPI_USERNAME --password $PYPI_PASSWORD --build
-            # now push the tag to git repository
+            - poetry install
+            # push the tag to git repository
             - git tag $(python get_package_version.py) && git push --follow-tags
+            - poetry publish --username $PYPI_USERNAME --password $PYPI_PASSWORD --build

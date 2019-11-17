@@ -20,3 +20,7 @@ blocks:
             - python -m pip install poetry
             - poetry install
             - pytest
+
+promotions:
+  - name: PyPI publish
+    pipeline_file: pypi_publish.yml

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "um"
-version = "1.5.2"
+version = "1.5.3"
 description = ""
 authors = ["umatbro <umatbroo@gmail.com>"]
 license = "MIT"

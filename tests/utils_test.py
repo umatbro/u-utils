@@ -1,3 +1,4 @@
+import pytest
 from unittest import TestCase
 import time
 
@@ -128,6 +129,7 @@ class TestMemoizeDecorator(TestCase):
         self.assertEqual(fibo(n=291), 2923602405716568564338475449381171413803636207598822186175234)
 
 
+@pytest.mark.skip('Not yet implemented')
 class TestFindNestedKeyValue(TestCase):
     def test_simple_nested(self):
         test_dict = {
